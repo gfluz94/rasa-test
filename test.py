@@ -39,7 +39,7 @@ def generate_metrics_report(results: dict, section="intents", index_number=1) ->
             to_add = ("Recall (Macro)", f"{100*v['recall']:.2f}%")
             table_rows.append(to_add)
         elif k=="conversation_accuracy":
-            to_add = ("Acurácia da Conversa, f"{100*v['accuracy']:.2f}%")
+            to_add = ("Acurácia da Conversa", f"{100*v['accuracy']:.2f}%")
 
             to_add = ("F1-Score (Macro)", f"{100*v['f1-score']:.2f}%")
         table_rows.append(to_add)
