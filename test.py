@@ -10,8 +10,8 @@ def generate_metrics_report(results: dict, section="intents", index_number=1) ->
     support = []
     global_results = {}
 
-    for k, v in intent_results.items():
-        if k in ["accuracy", "macro avg", "weighted avg"]:
+    for k, v in results.items():
+        if k in ["accuracy", "macro avg", "weighted avg", "conversation_accuracy"]:
             global_results[k] = v
         else:
             names.append(k)
@@ -38,12 +38,14 @@ def generate_metrics_report(results: dict, section="intents", index_number=1) ->
             table_rows.append(to_add)
             to_add = ("Recall (Macro)", f"{100*v['recall']:.2f}%")
             table_rows.append(to_add)
+        elif k=="conversation_accuracy":
+            to_add = ("Acurácia da Conversa, f"{100*v['accuracy']:.2f}%")
 
             to_add = ("F1-Score (Macro)", f"{100*v['f1-score']:.2f}%")
         table_rows.append(to_add)
     output += "\n".join([" | ".join(t) for t in table_rows]) + "\n\n"
 
-    output += "#### 1.2. Performance por Intent\n\n"
+    output += f"#### 1.2. Performance por f{section}\n\n"
     headers = (section.capitalize(), "Precisão", "Recall", "F1-Score", "# Exemplos", "% Exemplos")
     table_rows = [headers, ["---"]*len(headers)]
     for i, name in enumerate(names):
