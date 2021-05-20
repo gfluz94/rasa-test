@@ -10,6 +10,9 @@ jobs:
       - name: teste
         run: |
           echo "Pull request's base branch is: ${BASE_BRANCH}"
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        if: github.event_name == 'pull_request'
       # - name: checkout repo content
       #   uses: actions/checkout@v2
 
