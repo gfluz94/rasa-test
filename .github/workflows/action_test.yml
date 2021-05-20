@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: 3.8
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
   
     steps:
-      - run: |
+      - name: LOL
+        with:
+          python-version: ${{ matrix.python-version }}
+        run: |
           python test.py
