@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: git branch name
         run: |
-          echo "Pull request's base branch is: ${PR_BRANCH}"
+          echo "Pull request's branch is: ${PR_BRANCH}"
         env:
           PR_BRANCH: ${{ github.head_ref }}
         if: github.event_name == 'pull_request'
@@ -27,14 +27,17 @@ jobs:
 
       - name: commit files
         run: |
-          git pull origin master:master
+          git pull origin ${PR_BRANCH}:${PR_BRANCH}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git commit -m "generate results report" -a
+        env:
+          PR_BRANCH: ${{ github.head_ref }}
+        if: github.event_name == 'pull_request'
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master  
+          branch: ${{ github.head_ref }}  
