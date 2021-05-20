@@ -1,6 +1,8 @@
 name: Teste
 
 on: [push]
+  branches:
+      - main
 
 jobs:
   build:
