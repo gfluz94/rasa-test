@@ -27,7 +27,7 @@ jobs:
 
       - name: commit files
         run: |
-          git pull origin ${PR_BRANCH}:${PR_BRANCH}
+          git pull origin ${PR_BRANCH}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
