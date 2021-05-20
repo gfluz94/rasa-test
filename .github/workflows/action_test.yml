@@ -13,4 +13,4 @@ jobs:
           python-version: '3.8.5'
           
       - name: run script
-        run: test.py
+        run: python test.py
