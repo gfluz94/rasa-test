@@ -13,4 +13,4 @@ jobs:
           python-version: '3.8.5'
           
       - name: run script
-        run: python sj-gobierno.py
+        run: test.py
