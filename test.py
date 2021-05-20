@@ -70,7 +70,5 @@ if __name__ == "__main__":
     text_to_report += generate_metrics_report(intent_results, section="intent", index_number=1)
     text_to_report += generate_metrics_report(story_results, section="story", index_number=2)
 
-    print(text_to_report)
-
-# with open("results/pull_request_report.md", "w") as file:
-#     file.write(text_to_report)
+with open("results/pull_request_report.md", "w") as file:
+    file.write(text_to_report)
