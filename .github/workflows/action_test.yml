@@ -5,13 +5,12 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
   
     steps:
-      - name: LOL
+      - name: setup python
+        uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-        run: |
-          python test.py
+          python-version: '3.8.5'
+          
+      - name: run script
+        run: python sj-gobierno.py
