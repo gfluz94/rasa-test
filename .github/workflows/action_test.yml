@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: git branch name
         run: |
-          echo "Current branch is: ${PR_BRANCH}"
+          echo "Current branch is: ${PUSH_BRANCH}"
         env:
-          PR_BRANCH: ${{ github.head_ref }}
+          PUSH_BRANCH: ${{ github.ref }}
 
       - name: checkout repo content
         uses: actions/checkout@v2
@@ -26,16 +26,16 @@ jobs:
 
       - name: commit files
         run: |
-          git pull origin ${PR_BRANCH}
+          git pull origin ${PUSH_BRANCH}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
           git commit -m "generate results report" -a
         env:
-          PR_BRANCH: ${{ github.head_ref }}
+          PUSH_BRANCH: ${{ github.ref }}
           
       - name: push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}  
+          branch: ${{ github.ref }}  
