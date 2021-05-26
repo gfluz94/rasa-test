@@ -18,7 +18,7 @@ F1-Score (Ponderado) | 98.55%
 
 Intent | Precisão | Recall | F1-Score | # Exemplos | % Exemplos
 --- | --- | --- | --- | --- | ---
-goodbye | 91.67% | 100.00% | 95.65% | 11 | 16%
+goodbye | 91.67% | 42.00% | 95.65% | 11 | 16%
 greet | 100.00% | 92.31% | 96.00% | 13 | 19%
 affirm | 100.00% | 100.00% | 100.00% | 6 | 9%
 bot_challenge | 100.00% | 100.00% | 100.00% | 4 | 6%
